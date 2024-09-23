@@ -1,0 +1,59 @@
+ Here’s a detailed breakdown of the process involved in hosting multiple websites on an AWS EC2 instance:
+
+1. Preparation and Setup
+
+a. Launching an EC2 Instance:
+Started by launching an EC2 instance in the AWS Management Console.
+Selected an appropriate Amazon Machine Image (AMI) based on Ubuntu or any preferred Linux distribution.
+Configured security groups to allow HTTP (port 80) and HTTPS (port 443) traffic.
+b. Connecting to the EC2 Instance:
+Connected to the instance via SSH using a terminal or SSH client like PuTTY.
+
+2. Setting Up Apache HTTP Server
+
+a. Installing Apache:
+Updated the package lists and installed Apache using sudo apt update and sudo apt install apache2.
+b. Configuring Virtual Hosts:
+Created separate Apache virtual host configuration files (example1.conf and example2.conf) in /etc/apache2/sites-available/.
+Defined ServerName, ServerAlias, DocumentRoot, and directory permissions for each website.
+c. Enabling Virtual Hosts:
+Enabled each virtual host configuration by creating symbolic links in /etc/apache2/sites-enabled/ using sudo a2ensite example1.conf and sudo a2ensite example2.conf.
+d. Verifying Apache Configuration:
+Checked the syntax of Apache configuration files with sudo apache2ctl configtest.
+Restarted Apache to apply changes with sudo systemctl restart apache2.
+
+3. Uploading Website Files
+
+a. Creating Website Directories:
+Created directories (example1 and example2) under /var/www/ to store website files.
+Used mkdir to create directories and nano or vim to create index.html files with sample content.
+b. Moving Website Files:
+Moved index.html files from local directories (~/example1/index.html and ~/example2/index.html) to /var/www/example1/ and /var/www/example2/ using sudo mv command.
+
+4. DNS Setup
+
+a. Editing /etc/hosts:
+Edited the /etc/hosts file on the EC2 instance to map example1.com and example2.com to the instance’s public IP (ec2-44-202-20-79.compute-1.amazonaws.com).
+b. DNS Records (if applicable):
+Updated DNS records with domain registrars or DNS providers to point example1.com and example2.com to the EC2 instance's public IP.
+
+5. Testing and Access
+
+a. Accessing Websites:
+Verified website accessibility by visiting http://example1.com and http://example2.com in a web browser.
+Tested access using both domain names and the instance’s public IP address (http://ec2-44-202-20-79.compute-1.amazonaws.com).
+
+6. Troubleshooting and Final Adjustments
+
+a. Troubleshooting Issues:
+Checked Apache error logs (/var/log/apache2/error.log) for any errors or warnings.
+Verified file permissions (sudo chown -R www-data:www-data /var/www/example1 and sudo chown -R www-data:www-data /var/www/example2) if necessary.
+b. Final Checks:
+Ensured all configurations were correctly applied and websites were accessible from different devices and browsers.
+
+7. Reflecting on the Experience
+
+This project provided practical experience in:
+Apache HTTP Server configuration for hosting multiple websites.
+DNS management and domain mapping in AWS.
+Troubleshooting and optimizing web server performance.
