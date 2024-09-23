@@ -16,3 +16,16 @@ This repository contains configurations and files to host multiple websites on a
    ```bash
    git clone https://github.com/your-username/aws-ec2-multiple-websites.git
    cd aws-ec2-multiple-websites
+
+
+aws-ec2-multiple-websites/
+├── apache-config/
+│   ├── example1.conf
+│   └── example2.conf
+├── html/
+│   ├── example1/
+│   │   └── index.html
+│   └── example2/
+│       └── index.html
+├── .gitignore
+└── README.md
