@@ -18,6 +18,7 @@ This repository contains configurations and files to host multiple websites on a
    cd aws-ec2-multiple-websites
 
 
+Directory Structure
 aws-ec2-multiple-websites/
 ├── apache-config/
 │   ├── example1.conf
